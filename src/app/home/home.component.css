@@ -1,0 +1,14 @@
+img{
+    width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+h1{
+    margin-bottom: 50px;
+    color: rgb(25, 117, 117);
+}
+body{
+    background-color: antiquewhite;
+}

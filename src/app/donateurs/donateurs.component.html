@@ -1,0 +1,40 @@
+
+<div class="container">
+    <h2 class="text-center">Les donateurs </h2>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Adresse</th> 
+                <th scope="col">Montant</th>
+                <th scope="col">Devise</th>
+                <th scope="col">Date donation</th>
+                <th scope="col">Date modification</th>
+                <th *ngIf="authService.isAdmin()" scope="col">Modifier</th>
+                <th *ngIf="authService.isAdmin()" scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let donateur of donateurs">
+            <tr >
+                <td>{{donateur.id}}</td>
+                <td>{{donateur.nom}}</td>
+                <td>{{donateur.prenom}}</td>
+                <td>{{donateur.email}}</td>
+                <td>{{donateur.adresse}}</td>
+                <td>{{donateur.montant}}</td>
+                <td>{{donateur.devise}}</td>
+
+                <td>{{donateur.dateCreation | date:'dd/MM/yyyy'}}</td>
+                <td>{{donateur.dateModification | date:'dd/MM/yyyy'}}</td>
+                <td><a *ngIf="authService.isAdmin()" class="btn btn-outline-success"
+                        [routerLink]="['/updateDonateur',donateur.id]">Modifier</a></td>
+                <td><a *ngIf="authService.isAdmin()" class="btn btn-outline-danger"
+                        (click)="supprimerDonateur(donateur)">Supprimer</a></td>
+
+            </tr>
+        </tbody>
+    </table></div>

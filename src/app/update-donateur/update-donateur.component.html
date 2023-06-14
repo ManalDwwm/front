@@ -1,0 +1,51 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Donateur :</h2>
+    </div>
+    <form>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>ID Donateur</label>
+            <input readonly type="text" [(ngModel)]="currentDonateur.id" name="id" class="form-control">
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>Nom Donateur</label>
+            <input type="text" [(ngModel)]="currentDonateur.nom" name="nom" class="form-control">
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>Prenom Donateur</label>
+            <input type="text" [(ngModel)]="currentDonateur.prenom" name="prenom" class="form-control">
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>Email Donateur</label>
+            <input type="text" [(ngModel)]="currentDonateur.email" name="email" class="form-control">
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>Adresse Donateur</label>
+            <input type="text" [(ngModel)]="currentDonateur.adresse" name="adresse" class="form-control">
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>Montant Donation</label>
+            <input readonly type="number" [(ngModel)]="currentDonateur.montant" name="prixDonateur" class="form-control">
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>Devise de la Donation</label>
+            <select readonly [(ngModel)]="currentDonateur.devise" name="devise" class="form-control">
+                <!-- <option value="">--Veuillez choisir le type du don--</option> -->
+                <option disabled value="Euros">Euros</option>
+                <option disabled value="Livre_Syrienne">Livre Syrienne</option>
+                <option disabled value="Livre_Turque">Livre Turque</option>
+                <!-- <option value="autre">Autre</option> -->
+            </select>
+         
+        </div>
+       
+        <!-- <div class="col-sm-8 col-md-8 col-lg-8">
+            <label>Date </label>
+            <input type="date" [ngModel]="currentDonateur.dateModification | date: 'yyyy-MM-dd'"
+                (ngModelChange)=" currentDonateur.dateModification= $event" name="date" class="form-control">
+        </div> -->
+        <div class="mt-4">
+            <button type="submit" (click)="updateDonateur()" class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>

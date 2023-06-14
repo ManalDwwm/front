@@ -1,0 +1,53 @@
+<div class="container">
+    <h3 class="text-center va centrer un texte">Rechercher un Donateur </h3>
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Veuillez saisir le nom complet du donateur :</label>
+            <input type="text" class="form-control" [(ngModel)]="nom" name="nom" class="form-control">
+            <button type="submit" (click)="rechercherDonas()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+        </div>
+    </form>
+    <!-- <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2 mt-2 ">
+                    <label>Tapez le nom du donateur (pipe) :</label>
+                    <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+                </div>
+            </form>-->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>email</th>
+                        <th>Adresse</th>
+                        <th>Montant</th>
+                        <th>Devise</th>
+                        <th>Date Donation</th>
+                        <th>Date modification</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let donateur of donateurs">
+                    <!-- <tbody *ngFor="let donateur of donateurs  | searchFilter: searchTerm">-->
+                    <tr>
+                        <td>{{donateur.id}}</td>
+                        <td>{{donateur.nom}}</td>
+                        <td>{{donateur.prenom}}</td>
+                        <td>{{donateur.email}}</td>
+                        <td>{{donateur.adresse}}</td>
+                        <td>{{donateur.montant}}</td>
+                        <td>{{donateur.devise}}</td>
+
+                        <td>{{donateur.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{donateur.dateModification | date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                    <!-- <td><a class="btn btn-success" [routerLink]="['/updateDonateur',donateur.id]">Modifier</a></td>
+                    <td><a class="btn btn-danger" (click)="supprimerDonateur(donateur)">Supprimer</a></td>
+               -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

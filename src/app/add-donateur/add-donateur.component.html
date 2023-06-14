@@ -1,0 +1,188 @@
+ <div class="container">
+    <h2 class="text-center">Ajouter un donateur </h2>
+
+    <form  >
+        <div>
+            <h4>{{message}}</h4>
+        </div>
+        <div hidden class="col-sm-8 col-md-8 col-lg-8">
+            <label>ID Donateur</label>
+            <input type="text" [(ngModel)]="newDonateur.id" name="id" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Nom </label>
+            <input type="text" [(ngModel)]="newDonateur.nom" name="nom" class="form-control" id ="nom" ngModel  #nom=ngModel required  minlength="2">
+            <div class="alert alert-danger " *ngIf="nom.touched && nom.invalid">Veuillez saisir le nom (minimum 2 caractères)</div>
+        </div>
+        <div class="form-group">
+            <label>Prenom </label>
+            <input type="text" [(ngModel)]="newDonateur.prenom" name="prenom" class="form-control"id ="prenom" ngModel  #prenom=ngModel required minlength="2">
+            <div class="alert alert-danger " *ngIf="nom.touched && prenom.invalid">Veuillez saisir le prenom (minimum 2 caractères)</div>
+        </div>
+         <div class="form-group">
+            <label>Email </label>
+            <input type="email" [(ngModel)]="newDonateur.email" name="email" class="form-control" id ="email" ngModel  #email=ngModel required minlength="7">
+            <div class="alert alert-danger " *ngIf="nom.touched && email.invalid">Veuillez renseigner un email valide</div>
+        </div>
+
+        <div class="form-group">
+            <label>Adresse </label>
+            <input type="text" [(ngModel)]="newDonateur.adresse" name="adresse" class="form-control" id ="adresse" ngModel  #adresse=ngModel required minlength="3">
+            <div class="alert alert-danger " *ngIf="nom.touched && adresse.invalid">Veuillez saisir une adresse valide</div>
+        </div> 
+        <div class="form-group">
+            <label>Montant de la donation</label>
+            <input type="number" [(ngModel)]="newDonateur.montant" name="montant" class="form-control"id ="montant" ngModel  #montant=ngModel required>
+            <div class="alert alert-danger " *ngIf="nom.touched && montant.invalid">Veuillez saisir le montant </div>
+        </div>
+        <div class="form-group">
+            <label>Devise de la donation</label>
+            <select [(ngModel)]="newDonateur.devise" name="devise" class="form-control" id="devise" ngModel  #devise=ngModel required>
+                
+                
+                <option value="Euros">Euros</option>
+                <option value="Livre_Syrienne">Livre Syrienne</option>
+                <option value="Livre_Turque">Livre Turque</option>
+                
+            </select>
+            <div class="alert alert-danger " *ngIf="nom.touched && devise.invalid">Veuillez selectionner la devise</div>
+          
+        </div>
+    
+      <!--   <div class="form-group">
+            <label>Date </label>
+            <input type="date" [(ngModel)]="newDonateur.dateCreation" name="date" class="form-control" id ="date" ngModel  #date=ngModel required>
+            <div class="alert alert-danger " *ngIf="date.invalid">required</div>
+        </div> -->
+
+        <div class="mt-4">
+            <button type="submit" (click)="addDonateur()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div> 
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form  [formGroup]="validationForm"
+            (ngSubmit)="submitForm()"
+            #localForm="ngForm"
+            >
+               <div class="form-group">
+                   <label for="nom">Nom Donateur</label>
+                   <input  
+                   type="text"
+                       class="form-control"
+                       formControlName="nom"
+                       [(ngModel)]="newDonateur.nom"
+                       [class.is-invalid]="validationForm.get('nom')?.invalid">
+
+                   <div class="invalid-feedback" >
+                       nom required
+                   </div>
+               </div>
+              
+                  <div class="form-group">
+                      <label for="prenom">Nom Donateur</label>
+                      <input  
+                      type="text"
+                          class="form-control"
+                          formControlName="prenom"
+                          [(ngModel)]="newDonateur.prenom"
+                          [class.is-invalid]="validationForm.get('prenom')?.invalid">
+  
+                      <div class="invalid-feedback" >
+                          nom required
+                      </div>
+                  </div> -->
+
+                <!-- <div class="form-group">
+                    <label for="prenom">Prenom Donateur</label>
+                    <input [ngClass]="{'is-invalid':submitted && validationForm.controls.prenom.errors}" type="text"
+                        name="prenom" class="form-control">
+
+                    <div *ngIf="submitted && validationForm.controls.prenom.errors" class="text-danger">
+                        <div *ngIf="submitted && validationForm.controls.prenom.errors.required">
+                            Veuillez saisir le nom du danateur
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">Email Donateur</label>
+                    <input [ngClass]="{'is-invalid':submitted && validationForm.controls.email.errors}" type="email"
+                        name="email" class="form-control">
+
+                    <div *ngIf="submitted && validationForm.controls.email.errors" class="text-danger">
+                        <div *ngIf="submitted && validationForm.controls.email.errors.email">
+                            Email non valide
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="adresse">Adresse Donateur</label>
+                    <input id="adresse" [ngClass]="{'is-invalid':submitted && validationForm.controls.adresse.errors}" type="text"
+                         name="adresse" class="form-control">
+
+                    <div *ngIf="submitted && validationForm.controls.adresse.errors" class="text-danger">
+                        <div *ngIf="submitted && validationForm.controls.adresse.errors.required">
+                            Adresse ou ville obligatoire
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="montant">Montant Donation</label>
+                    <input [ngClass]="{'is-invalid':submitted && validationForm.controls.montant.errors}" type="number"
+                        name="montant" class="form-control">
+
+                    <div *ngIf="submitted && validationForm.controls.montant.errors" class="text-danger">
+                        <div *ngIf="submitted && validationForm.controls.montant.errors.required">
+                            Veuillez saisir le montant de la donation
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="devise">Devise Donation</label>
+                    <input [ngClass]="{'is-invalid':submitted && validationForm.controls.devise.errors}" type="text"
+                        name="devise" class="form-control">
+
+                    <div *ngIf="submitted && validationForm.controls.donation.errors" class="text-danger">
+                        <div *ngIf="submitted && validationForm.controls.donation.errors.required">
+                            Veuillez saisir la devise de la donation
+                        </div>
+
+                    </div>
+                </div>
+
+               
+
+
+                <div class="form-group">
+                    <label for="date">Date création</label>
+                    <input [ngClass]="{'is-invalid':submitted && validationForm.controls.date.errors}" type="date"
+                        name="date" class="form-control">
+
+                    <div *ngIf="submitted && validationForm.controls.date.errors" class="text-danger">
+                        <div *ngIf="submitted && validationForm.controls.date.errors.required">
+                            Veuillez saisir la date
+                        </div>
+                    </div>
+
+                </div>
+
+ -->
+                <!-- <div class="form-group">
+                    <button type="submit" class="btn btn-primary" (click)="addDonateur()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->

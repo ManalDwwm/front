@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Application qui gère les dons à destination des orphelins">
+  <title>Gestion des donateurs</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Gestion Donateurs</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Accueil</a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Donateurs
+          </a>
+          <div class="dropdown-menu">
+            <a *ngIf=" authService.isAdmin() || authService.isUser() " class="dropdown-item" routerLink="/donateurs" >Lister</a>
+            <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="/add-donateur">Ajouter</a>
+            <a *ngIf="authService.isAdmin() || authService.isUser() "class="dropdown-item" routerLink="/rechercheParNom">Recherche donateur par Nom </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <!-- pour récupérer le nom de l'utilisateur connecté -->
+        <li> <a class="nav-link">{{authService.loggedUser}}</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Connexion
+          </a>
+          <div class="dropdown-menu">
+            <!-- si je ne suis pas connecté -->
+            <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink="login">Login</a>
+            <a *ngIf="authService.isloggedIn" class="dropdown-item" (click)="onLogout()">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</body>
+</html>
+
+
+<router-outlet></router-outlet>
